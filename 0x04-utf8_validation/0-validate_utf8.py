@@ -28,8 +28,7 @@ def validUTF8(data):
         else:
             # Check if byte is continuation byte (starts with '10')
             if not byte_bin.startswith('10'):
-                byte_count -= 0
-            else:
                 return False
+            byte_count -= 1
 
     return byte_count == 0
