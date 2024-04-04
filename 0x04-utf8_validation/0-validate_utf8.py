@@ -12,6 +12,9 @@ def validUTF8(data):
     """
     byte_count = 0
     for byte in data:
+        # Apply bit mask to get the 8 least significant bits
+        byte = byte & 0xFF
+
         # Convert byte to binary and get the first 8 bits
         byte_bin = format(byte, '08b')
 
