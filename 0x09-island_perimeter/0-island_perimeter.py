@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ 0. Island Perimeter """
 
+
 def island_perimeter(grid):
     """
         Calculate the perimeter of the island
@@ -15,18 +16,12 @@ def island_perimeter(grid):
         for j in range(len(grid[0])):
             # if cell is a land (1)
             if grid[i][j] == 1:
+                perimeter += 4
                 # Check each side of the cell
-                # check above
-                if i == 0 or grid[i - 1][j] == 0:
-                    perimeter += 1
-                # check under
-                if i == len(grid) - 1 or grid[i + 1][j] == 0:
-                    perimeter += 1
-                # check left
-                if j == 0 or grid[i][j - 1] == 0:
-                    perimeter += 1
-                # check right
-                if j == len(grid[0]) or grid[i][j + 1] == 0:
-                    perimeter += 1
+                if i > 0 or grid[i - 1][j] == 1:
+                    perimeter -= 2
+
+                if j > 0 or grid[i][j - 1] == 0:
+                    perimeter -= 2
 
     return perimeter
