@@ -16,17 +16,17 @@ def makeChange(coins: list, total: int) -> int:
     if total <= 0:
         return 0
 
-    if total <= min(coins):
+    if coins == [] or coins is None:
         return -1
 
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
-
+    coins.sort(reverse=True)
+    count = 0
     for coin in coins:
-        for amount in range(coin, total + 1):
-            dp[amount] = min(dp[amount], dp[amount - coin] + 1)
+        if total == 0:
+            break
 
-    if dp[total] != float('inf'):
-        return dp[total]
-    else:
-        return -1
+        n = total // coin
+        total -= n * coin
+        count += n
+
+    return count if total == 0 else -1
